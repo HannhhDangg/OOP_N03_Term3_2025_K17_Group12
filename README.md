@@ -41,5 +41,5 @@ o	total_price: Tổng giá trị của đơn hàng.
 Lớp này quản lý các sản phẩm trong kho của shop.
 •	Thuộc tính:
 o	products: Danh sách các sản phẩm có trong kho.
-•	6. Lớp Sales (Bán hàng)
+6. Lớp Sales (Bán hàng)
 •	Lớp này quản lý các giao dịch bán hàng, tạo và xử lý đơn hàng.
