@@ -37,5 +37,7 @@ Thuộc tính:
 o products: Danh sách các sản phẩm có trong kho. •
 + Lớp Sales (Bán hàng) • Lớp này quản lý các giao dịch bán hàng, tạo và xử lý đơn hàng.
 
+  Câu 3,4,5 : https://github.com/HannhhDangg/OOP_N03_Term3_2025_K17_Group12/tree/main/pure-java-project
+
 
 
