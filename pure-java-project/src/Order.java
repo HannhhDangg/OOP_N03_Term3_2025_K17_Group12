@@ -1,12 +1,12 @@
 package src;
 
-public class order {
+public class Order {
     String ma_sp;
     String ten_kh;
     String ten_sp;
     float tong_gia;
 
-    public order(String ma_sp, String ten_kh, String ten_sp, float tong_gia) {
+    public Order(String ma_sp, String ten_kh, String ten_sp, float tong_gia) {
         this.ma_sp = ma_sp;
         this.ten_kh = ten_kh;
         this.ten_sp = ten_sp;
