@@ -1,3 +1,6 @@
+import model.customer;
+import main.java.model.customer;
+
 public class customertest {
     public void test {
         customer customer01 = new customer(01,"Nguyen Manh Hoa","123455@gmail.com",0129374837);
