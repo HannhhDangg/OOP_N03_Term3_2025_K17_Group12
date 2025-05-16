@@ -1,63 +1,22 @@
-import java.util.ArrayList;
-import java.util.List;
+package src;
 
 public class Order {
-        public String ma_sp;
-        public Customer khachhang;
-        public List<Product> cac_sp;
-        public double tong_tien;
+    String ma_sp;
+    String ten_kh;
+    String ten_sp;
+    float tong_gia;
 
-    public Order(String ma_sp, Customer khachhang, List<Product> cac_sp) {
+    public Order(String ma_sp, String ten_kh, String ten_sp, float tong_gia) {
         this.ma_sp = ma_sp;
-        this.khachhang = khachhang;
-        this.cac_sp = cac_sp;
-        this.tong_tien = calculateTotalPrice();
+        this.ten_kh = ten_kh;
+        this.ten_sp = ten_sp;
+        this.tong_gia = tong_gia;
     }
 
-    public String getma_sp() {
-        return ma_sp;
-    }
-
-    public void setma_sp(String ma_sp) {
-        this.ma_sp = ma_sp;
-    }
-
-    public Customer getkhachhang() {
-        return khachhang;
-    }
-
-    public void setkhachhang(Customer khachhang) {
-        this.khachhang = khachhang;
-    }
-
-    public List<Product> getcac_sp() {
-        return cac_sp;
-    }
-
-    public void setcac_sp(Product> cac_sp){}
-        this.cac_sp = cac_sp
-        this.tong_tien = calculateTotalPrice();
-    }
-
-    public double gettong_tien(){
-        return tong_tien;
-    }
-
-    private double calculateTotalPrice() {
-        double total = 0.0;
-        for (Product product : products) {
-            total += product.getPrice();
-        }
-        return total;
-    }
-
-    public void displayOrderInfo() {
-        System.out.println("Order ID: " + orderId);
-        System.out.println("Customer: " + customer.getName());
-        System.out.println("Products in order:");
-        for (Product product : products) {
-            System.out.println("- " + product.getName() + " | Price: " + product.getPrice());
-        }
-        System.out.println("Total Price: " + totalPrice);
+    public void displayOrder() {
+        System.out.println("Mã đơn hàng: " + ma_sp);
+        System.out.println("Khách hàng: " + ten_kh);
+        System.out.println("Sản phẩm: " + ten_sp);
+        System.out.println("Tổng tiền: " + tong_gia);
     }
 }
