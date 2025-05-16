@@ -60,4 +60,8 @@ public class customer{
         System.out.println("so lan mua hang : " + ls_mua_hang.size());
     }
 
+
+
+
+
 }
