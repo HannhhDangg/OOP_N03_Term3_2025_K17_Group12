@@ -65,6 +65,8 @@ Yêu cầu:
 Nội dung 02:
 
 01 sơ đồ Class Diagram của bài tập lớn
+![image](https://github.com/user-attachments/assets/8fd30920-43ec-444f-bdea-fd6b0fa403b6)
+
 
 
 Nội dung 03:
@@ -75,6 +77,8 @@ Nội dung 03:
 
 Chú ý Sơ đồ hành vi sử dụng: 
 + Sequence Diagram
+![image](https://github.com/user-attachments/assets/3bad24ef-1b1e-4a69-831a-9a8d469c694e)
+
 + Or [Hoặc] Activity Diagram
 
 
