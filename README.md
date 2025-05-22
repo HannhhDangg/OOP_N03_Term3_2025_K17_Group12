@@ -69,8 +69,9 @@ Nội dung 02:
 
 Nội dung 03:
 
-
 03 sơ đồ Behavioural Diagram của bài tập lớn cho 03 chức năng cụ thể, ví dụ 01 sơ đồ cho chức năng thêm đối tượng, 01 sơ đồ cho xóa đối tượng, và 01 sơ đồ cho sửa đối tượng. 
+
+![image](https://github.com/user-attachments/assets/f28ecb42-77fd-46a7-a2e4-847d2b5b7aa5)
 
 Chú ý Sơ đồ hành vi sử dụng: 
 + Sequence Diagram
