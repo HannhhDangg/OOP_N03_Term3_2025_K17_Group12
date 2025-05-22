@@ -77,7 +77,8 @@ Nội dung 03:
 
 Chú ý Sơ đồ hành vi sử dụng: 
 + Sequence Diagram
-![image](https://github.com/user-attachments/assets/3bad24ef-1b1e-4a69-831a-9a8d469c694e)
+![image](https://github.com/user-attachments/assets/2b8f9ed2-efe4-4982-a3de-b42e3839ef46)
+
 
 + Or [Hoặc] Activity Diagram
 
