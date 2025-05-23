@@ -20,4 +20,23 @@ public class OrderList {
         }
         return od;
     }
+
+    //phuong thuc delete
+    public ArrayList<Order> getDeleteOrder(int ma_sp){
+        for(int i = 0;i< od.size();i++){
+            if(od.get(i).ma_sp == ma_sp){
+                od.remove(i);
+            }
+        }
+        return od;
+    }
+
+    //in danh sach don hang
+    public void printOrderList(){
+        int len = od.size();
+
+        for(int i = 0; i< len ;i++){
+            System.out.println("Ma san pham: " + od.get(i).ma_sp + "ten san pham: " + od.get(i).ten_sp);
+        }
+    }
 }
