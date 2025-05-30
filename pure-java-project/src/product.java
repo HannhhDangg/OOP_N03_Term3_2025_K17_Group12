@@ -1,11 +1,11 @@
 public class Product{
-    private String maSP;
-    private String tenSP;
-    private String loai;
-    private String size;
-    private String mauSac;
-    private double gia;
-    private int soLuong;
+     String maSP;
+     String tenSP;
+     String loai;
+     String size;
+     String mauSac;
+     double gia;
+     int soLuong;
 }
 product(String maSP, String tenSP, String loai, String size, String mauSac, double gia, int soLuong){
     this.maSP = maSP;
