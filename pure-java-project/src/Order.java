@@ -1,14 +1,13 @@
-package src;
 
 public class Order {
-    String ma_don_hang;
-    String ma_sp;
+    int ma_don_hang;
+    int ma_sp;
     String ten_kh;
     String ten_sp;
     float don_gia;
     int so_luong;
 
-    public Order(String ma_don_hang, String ma_sp, String ten_kh, String ten_sp, float don_gia, int so_luong) {
+    public Order(int ma_don_hang, int ma_sp, String ten_kh, String ten_sp, float don_gia, int so_luong) {
         this.ma_don_hang = ma_don_hang;
         this.ma_sp = ma_sp;
         this.ten_kh = ten_kh;
