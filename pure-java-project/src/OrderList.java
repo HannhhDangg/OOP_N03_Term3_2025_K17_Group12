@@ -44,5 +44,21 @@ public class OrderList {
         }
     }
 
+    //tinh tong tien
+    /*
+     * Todo:
+     * cong thuc tinh tong tien ?
+     * input ?
+     * output ?
+     * input => output ?x
+     */
+    public double getTotalMoney(){
+        double tong_tien = 0;
+        for(int i =0 ;i<od.size();i++){
+            tong_tien += od.get(i).getTongGia();
+        }
+        return tong_tien;
+    }
+
 }
 
