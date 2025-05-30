@@ -1,4 +1,3 @@
-
 public class Order {
     int ma_don_hang;
     int ma_sp;

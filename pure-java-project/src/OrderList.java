@@ -10,10 +10,10 @@ public class OrderList {
         if (o.ma_sp == ord.ma_sp) {
             System.out.println("Đơn hàng với mã sản phẩm này đã tồn tại!");
             return od;
+            }
         }
-    }
-    od.add(ord);
-    return od;
+        od.add(ord);
+        return od;
     }
 
 
@@ -21,7 +21,7 @@ public class OrderList {
     public ArrayList<Order> getEditOrder(String ten_sp, int ma_sp) {
         for (int i = 0; i < od.size(); i++) {
             if (od.get(i).ma_sp == ma_sp) {
-                System.out.print("true");
+                System.out.println("Đã cập nhật tên sản phẩm.");
                 od.get(i).ten_sp = ten_sp;
             }
         }
@@ -30,11 +30,14 @@ public class OrderList {
 
     //phuong thuc delete
     public ArrayList<Order> getDeleteOrder(int ma_sp){
-        for(int i = 0;i< od.size();i++){
-            if(od.get(i).ma_sp == ma_sp){
+        for (int i = 0; i < od.size(); i++) {
+            if (od.get(i).ma_sp == ma_sp) {
                 od.remove(i);
+                i--; 
             }
         }
+
+
         return od;
     }
 
@@ -65,7 +68,7 @@ public class OrderList {
             System.out.println("----------------------------");
         }
         System.out.println("Tổng tiền đơn hàng: " + getTotalMoney());
-        Systen.out.println("===========================================");
+        System.out.println("===========================================");
     }
 }
 

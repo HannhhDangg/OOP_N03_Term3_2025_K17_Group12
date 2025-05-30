@@ -1,4 +1,3 @@
-package test;
 import src.Order;
 
 public class Ordertest {
