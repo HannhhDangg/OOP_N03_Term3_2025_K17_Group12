@@ -1,4 +1,4 @@
-import TestNumber;
+/*import TestNumber;
 import PassObject;
 import ShortCircuitTest;
 import StringTest;
@@ -7,7 +7,7 @@ import randNum;
 
 import CastingTest;
 import BreakAndContinue;
-import SwitchCake;
+import SwitchCake;*/
 //import Order
 import Order;
 

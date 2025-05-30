@@ -7,10 +7,14 @@ public class OrderList {
     // phuong thuc add
     public ArrayList<Order> addOrder(Order ord) {
         od.add(ord);
+        if (o.ma_sp == ord.ma_sp) {
+            System.out.println("Đơn hàng với mã sản phẩm này đã tồn tại!");
+            return od;
+        }
         return od;
     }
 
-    // phuong thuc edit
+    // phuong thuc edit ten san pham
     public ArrayList<Order> getEditOrder(String ten_sp, int ma_sp) {
         for (int i = 0; i < od.size(); i++) {
             if (od.get(i).ma_sp == ma_sp) {
@@ -36,7 +40,9 @@ public class OrderList {
         int len = od.size();
 
         for(int i = 0; i< len ;i++){
-            System.out.println("Ma san pham: " + od.get(i).ma_sp + "ten san pham: " + od.get(i).ten_sp);
+            System.out.println("Mã sản phẩm: " + od.get(i).ma_sp + "tên sản phầm: " + od.get(i).ten_sp);
         }
     }
+
 }
+

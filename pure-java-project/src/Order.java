@@ -4,7 +4,8 @@ public class Order {
     String ma_sp;
     String ten_kh;
     String ten_sp;
-    float tong_gia;
+    String ma_don_hang;
+    double tong_gia;
 
     public Order(String ma_sp, String ten_kh, String ten_sp, float tong_gia) {
         this.ma_sp = ma_sp;
