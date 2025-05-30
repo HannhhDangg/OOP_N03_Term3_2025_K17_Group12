@@ -67,6 +67,10 @@ public class App {
                 // Order order_01 = new Order("051525","Nguyen Manh Hoa","Ao coc Do
                 // MIXI",5000000);
                 // order_01.displayOrder();
+                OrderHistory.mockData();
+                orderHistoryTest.testKhachCoDonHang();
+                orderHistoryTest.testKhachKhongCoDonHang();
+                OrderHistory.xemLichSuMuaHang(101);
 
         }
 }
