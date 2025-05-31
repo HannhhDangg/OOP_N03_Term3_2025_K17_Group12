@@ -4,7 +4,7 @@ import ShortCircuitTest;
 import StringTest;
 import CakeCase;
 import randNum;
-
+import java.time.LocalDate;
 import CastingTest;
 import BreakAndContinue;
 import SwitchCake;*/
@@ -59,18 +59,14 @@ public class App {
                 // da fix customer
                 // done
 
-                customer customer01 = new customer(01, "Nguyen Manh Hoa", "123455@gmail.com", "09122338883");
-                System.out.println(customer01.ma_kh + customer01.ten_kh + customer01.email + customer01.so_dien_thoai);
+           
 
                 // em fix tiep order
 
                 // Order order_01 = new Order("051525","Nguyen Manh Hoa","Ao coc Do
                 // MIXI",5000000);
                 // order_01.displayOrder();
-                OrderHistory.mockData();
-                orderHistoryTest.testKhachCoDonHang();
-                orderHistoryTest.testKhachKhongCoDonHang();
-                OrderHistory.xemLichSuMuaHang(101);
+                OrderHistoryTest.runTests();
 
         }
 }
