@@ -84,4 +84,10 @@ Chú ý Sơ đồ hành vi sử dụng:
 + Or [Hoặc] Activity Diagram
 
 
+Nội dung 05:
+-Chức năng quản lý mua hàng:
+Lưu đồ thuật toán
+![image](https://github.com/user-attachments/assets/f507fb11-e52a-4579-a066-20ef14417b81)
+
+
 
