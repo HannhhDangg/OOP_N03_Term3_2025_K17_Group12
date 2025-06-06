@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class OrderList {
 
-    ArrayList<Order> od = new ArrayList<Order>();
+    private ArrayList<Order> od = new ArrayList<Order>();
 
     // phuong thuc add
     public ArrayList<Order> addOrder(Order ord) {

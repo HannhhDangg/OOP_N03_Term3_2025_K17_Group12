@@ -1,6 +1,14 @@
 import java.util.ArrayList;
 
 public class Cart {
+    public boolean isEmpty() {
+    return danhSachSP.isEmpty();
+    }
+
+    public void clear() {
+        danhSachSP.clear();
+    }
+
     private ArrayList<Product> danhSachSP;
 
     public Cart() {

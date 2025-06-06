@@ -1,6 +1,5 @@
 public class CartTest {
-    public static void main(String[] args) {
-        
+    public static void test() {
         Cart gioHangTest = new Cart();
 
         Product sp1 = new Product("SP01", "Áo thun", "Thời trang", "M", "Đen", 150000, 2);
