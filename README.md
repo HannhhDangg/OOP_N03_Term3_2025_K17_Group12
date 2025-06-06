@@ -86,7 +86,8 @@ Chú ý Sơ đồ hành vi sử dụng:
 
 Nội dung 05:
 -Chức năng quản lý mua hàng:
-
 Câu 1:Lưu đồ thuật toán
+
+
 ![image](https://github.com/user-attachments/assets/75593095-4b27-4fe5-b4c5-bc5a1152dd7f)
 
