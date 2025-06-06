@@ -88,4 +88,5 @@ Nội dung 05:
 -Chức năng quản lý mua hàng:
 
 Câu 1:Lưu đồ thuật toán
-![image](https://github.com/user-attachments/assets/f5d43e15-3207-4beb-8a93-300fba0b0aa3)
+![image](https://github.com/user-attachments/assets/75593095-4b27-4fe5-b4c5-bc5a1152dd7f)
+
