@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class customerList{
+public class CustomerList{
     ArrayList<customer> ct = new ArrayList<customer>();
     public ArrayList<customer>addcustomer<customer cus>{
         ct.add(cus);

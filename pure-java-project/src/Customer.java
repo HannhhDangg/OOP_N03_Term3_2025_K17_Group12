@@ -61,3 +61,20 @@ public class Customer {
     }
 
     public void printCustomerInfo() {
+        System.out.println("--- Thông tin khách hàng ---");
+        System.out.println("Mã khách hàng: " + customerId);
+        System.out.println("Tên: " + customerName);
+        System.out.println("Email: " + email);
+        System.out.println("Số điện thoại: " + phoneNumber);
+        if (orderHistory.isEmpty()) {
+            System.out.println("Lịch sử đặt hàng: Chưa có đơn hàng nào.");
+        } else {
+            System.out.println("Lịch sử đặt hàng: " + orderHistory.size() + " đơn hàng.");
+            // Bạn có thể muốn lặp lại và in chi tiết từng đơn hàng ở đây
+            // Ví dụ:
+            // for (Order order : orderHistory) {
+            //     System.out.println("  - Mã đơn hàng: " + order.getOrderId() + ", Tổng cộng: " + order.getTotalAmount());
+            // }
+        }
+        System.out.println("----------------------------");
+    }
