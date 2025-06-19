@@ -13,36 +13,44 @@ public class Payment {
             return;
         }
 
-        cart.hienThiGioHang(); // Hiển thị giỏ hàng và tổng tiền
+        try (Scanner sc = new Scanner(System.in)) {
+            cart.hienThiGioHang();
 
-        Scanner sc = new Scanner(System.in);
+            System.out.print("Xác nhận thanh toán? (Y/N): ");
+            String confirm = sc.nextLine();
 
-        System.out.print("Xác nhận thanh toán? (Y/N): ");
-        String confirm = sc.nextLine();
+            if (!confirm.equalsIgnoreCase("Y")) {
+                System.out.println("Thanh toán đã bị hủy.");
+                return;
+            }
 
-        if (!confirm.equalsIgnoreCase("Y")) {
-            System.out.println("Thanh toán đã bị hủy.");
-            return;
+            System.out.println("Nhập thông tin giao hàng:");
+            System.out.print("Họ và tên: ");
+            String hoTen = sc.nextLine();
+            System.out.print("Địa chỉ: ");
+            String diaChi = sc.nextLine();
+            System.out.print("Số điện thoại: ");
+            String sdt = sc.nextLine();
+
+            if (hoTen.isBlank() || diaChi.isBlank() || sdt.isBlank()) {
+                System.out.println("Thông tin giao hàng không được để trống.");
+                return;
+            }
+
+            System.out.println("\nThông tin giao hàng:");
+            System.out.println("Họ và tên: " + hoTen);
+            System.out.println("Địa chỉ: " + diaChi);
+            System.out.println("Số điện thoại: " + sdt);
+
+            System.out.println("\n">> Đang xử lý thanh toán...");
+            System.out.println("Đơn hàng của bạn đã được thanh toán thành công!");
+
+            cart.clear();
+
+        } catch (Exception e) {
+            System.out.println("Đã xảy ra lỗi trong quá trình thanh toán.");
+        } finally {
+            System.out.println("Kết thúc quá trình thanh toán.");
         }
-
-        // Nhập thông tin giao hàng
-        System.out.println("Nhập thông tin giao hàng:");
-        System.out.print("Họ và tên: ");
-        String hoTen = sc.nextLine();
-        System.out.print("Địa chỉ: ");
-        String diaChi = sc.nextLine();
-        System.out.print("Số điện thoại: ");
-        String sdt = sc.nextLine();
-
-        // In thông tin giao hàng
-        System.out.println("\nThông tin giao hàng:");
-        System.out.println("Họ và tên: " + hoTen);
-        System.out.println("Địa chỉ: " + diaChi);
-        System.out.println("Số điện thoại: " + sdt);
-
-        System.out.println("\n>> Đang xử lý thanh toán...");
-        System.out.println("Đơn hàng của bạn đã được thanh toán thành công!");
-
-        cart.clear();
     }
 }

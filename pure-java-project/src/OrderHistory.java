@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,9 +5,9 @@ public class OrderHistory {
     private static List<Order> orderList = new ArrayList<>();
 
     public static void mockData() {
-        orderList.add(new Order(1, 101, LocalDate.of(2025, 5, 1), 50000.0));
-        orderList.add(new Order(2, 102, LocalDate.of(2025, 6, 1), 30000.0));
-        orderList.add(new Order(3, 101, LocalDate.of(2025, 6, 15), 45000.0));
+        orderList.add(new Order(1, 101, "Nguyễn Văn A", "Áo thun", 50000, 1));
+        orderList.add(new Order(2, 102, "Trần Thị B", "Quần jeans", 30000, 2));
+        orderList.add(new Order(3, 101, "Nguyễn Văn A", "Giày", 45000, 1));
     }
 
     public static void viewOrderHistory(int customerId) {
@@ -43,4 +42,3 @@ public class OrderHistory {
         return findOrdersByCustomer(maKhachHang);
     }
 }
-

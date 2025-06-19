@@ -1,6 +1,6 @@
 public class Pay {
     public static void main(String[] args) {
-        OrderList ds = new OrderList();
+        OrderService ds = new OrderService();
 
         Order o1 = new Order();
         o1.ma_sp = 1;

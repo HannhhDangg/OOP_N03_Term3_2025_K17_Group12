@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class OrderListTest {
     public static void main(String[] args) { // Đã sửa lỗi ở đây
-        OrderList ds = new OrderList();
+        OrderService ds = new OrderService();
 
         ds.addOrder(new Order(1001, 1, "Nguyễn Văn A", "Áo sơ mi", 200000f, 2));
         ds.addOrder(new Order(1002, 2, "Trần Thị B", "Quần jean", 350000f, 1));
