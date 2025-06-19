@@ -96,6 +96,7 @@ Yêu cầu số 8:
 Câu 1:
 orders: 
 ![image](https://github.com/user-attachments/assets/bdf9ec79-e895-49d1-b7a6-65bec1d23f89)
-hiển thị ra danh sách đơn hàng đã tạo.
+Hiển thị ra danh sách đơn hàng đã tạo cùng với các chức năng thêm, sửa, xóa đơn hàng.
+
 
 
