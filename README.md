@@ -91,3 +91,11 @@ Câu 1:Lưu đồ thuật toán
 
 ![image](https://github.com/user-attachments/assets/75593095-4b27-4fe5-b4c5-bc5a1152dd7f)
 
+
+Yêu cầu số 8:
+Câu 1:
+orders: 
+![image](https://github.com/user-attachments/assets/bdf9ec79-e895-49d1-b7a6-65bec1d23f89)
+hiển thị ra danh sách đơn hàng đã tạo.
+
+
