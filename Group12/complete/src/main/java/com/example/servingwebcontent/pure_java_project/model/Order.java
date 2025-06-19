@@ -1,5 +1,6 @@
 package com.example.servingwebcontent.pure_java_project.model;
 
+
 public class Order {
     private int maDonHang;
     private int maSp;

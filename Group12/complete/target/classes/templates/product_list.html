@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Danh sách sản phẩm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/product_list.css}"> <!-- gắn link trong Thymeleaf-->
 </head>
 <body>
     <h1>📦 Danh sách sản phẩm</h1>
 
-    <table border="1" cellpadding="8" cellspacing="0">
+    <table borders="1" cellpadding="8" cellspacing="0">
         <tr>
             <th>Mã SP</th>
             <th>Tên SP</th>
@@ -28,7 +30,7 @@
         </tr>
     </table>
 
-    <h2>✏️ Sửa tên sản phẩm theo số lượng</h2>
+    <h2> Sửa tên sản phẩm theo số lượng</h2>
     <form th:action="@{/products/sua-ten}" method="post">
         <label>Tên mới:</label>
         <input type="text" name="tenMoi" required>
@@ -37,13 +39,13 @@
         <button type="submit">Sửa tên</button>
     </form>
 
-    <h2>🗑️ Xoá sản phẩm theo số lượng</h2>
+    <h2> Xoá sản phẩm theo số lượng</h2>
     <form th:action="@{/products/xoa}" method="post">
         <label>Số lượng:</label>
         <input type="number" name="soLuong" min="1" required>
         <button type="submit">Xoá sản phẩm</button>
     </form>
-    <h2>➕ Thêm sản phẩm mới</h2>
+    <h2> Thêm sản phẩm mới</h2>
     <form th:action="@{/products/them}" method="post">
         <label>Mã SP:</label>
         <input type="text" name="maSP" required><br>
