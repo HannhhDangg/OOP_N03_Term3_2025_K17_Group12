@@ -28,7 +28,7 @@
         </tr>
     </table>
 
-    <h2>✏️ Sửa tên sản phẩm theo số lượng</h2>
+    <h2> Sửa tên sản phẩm theo số lượng</h2>
     <form th:action="@{/products/sua-ten}" method="post">
         <label>Tên mới:</label>
         <input type="text" name="tenMoi" required>
@@ -37,13 +37,13 @@
         <button type="submit">Sửa tên</button>
     </form>
 
-    <h2>🗑️ Xoá sản phẩm theo số lượng</h2>
+    <h2> Xoá sản phẩm theo số lượng</h2>
     <form th:action="@{/products/xoa}" method="post">
         <label>Số lượng:</label>
         <input type="number" name="soLuong" min="1" required>
         <button type="submit">Xoá sản phẩm</button>
     </form>
-    <h2>➕ Thêm sản phẩm mới</h2>
+    <h2> Thêm sản phẩm mới</h2>
     <form th:action="@{/products/them}" method="post">
         <label>Mã SP:</label>
         <input type="text" name="maSP" required><br>
