@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách Đơn hàng</title>
+    <style>
+        table { width: 80%; margin: auto; border-collapse: collapse; }
+        th, td { padding: 8px; border: 1px solid #ccc; text-align: center; }
+        h2, h3 { text-align: center; }
+    </style>
+</head>
+<body>
+
+<h2>Danh sách đơn hàng</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Mã ĐH</th>
+        <th>Mã SP</th>
+        <th>Tên KH</th>
+        <th>Tên SP</th>
+        <th>Giá SP</th>
+        <th>Số lượng</th>
+        <th>Thành tiền</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.maDonHang}">1</td>
+            <td th:text="${order.maSp}">101</td>
+            <td th:text="${order.tenKh}">Nguyễn Văn A</td>
+            <td th:text="${order.tenSp}">Áo Thun</td>
+            <td th:text="${order.giaSp}">150000</td>
+            <td th:text="${order.soLuong}">2</td>
+            <td th:text="${order.tongGia}">300000</td>
+        </tr>   
+    </tbody>
+</table>
+
+<h3>Tổng tiền đơn hàng: <span th:text="${tongTien} + ' đ'">0</span></h3>
+
+</body>
+</html>
