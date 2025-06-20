@@ -1,8 +1,10 @@
-#Members:
+# Members:
 1. Nguyen Manh Hoa
 2. Nguyen Dinh Dat
 3. Nguyen Dang Hanh
 4. Nguyen Le Thu
+
+   Link ReadMe : https://hannhhdangg.github.io/OOP_N03_Term3_2025_K17_Group12/
 
 Câu 1 : Quản lý shop bán đồ may mặc
 Câu 2 :
