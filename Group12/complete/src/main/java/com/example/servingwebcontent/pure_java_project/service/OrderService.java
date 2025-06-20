@@ -2,6 +2,8 @@ package com.example.servingwebcontent.pure_java_project.service;
 
 import com.example.servingwebcontent.pure_java_project.model.Order;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +11,9 @@ import java.util.List;
 public class OrderService {
     private final List<Order> od = new ArrayList<>();
     public OrderService() {
-    od.add(new Order(1, 101, "Nguyễn Mạnh Hòa", "Áo Thun", 150000, 2));
-    od.add(new Order(2, 102, "Nguyễn Đình Đạt", "Quần Jean", 300000, 1));
-    od.add(new Order(3, 103, "Nguyễn Đăng Hanh", "Áo Sơ Mi", 200000, 3));
+    od.add(new Order(1, 101, "Nguyễn Mạnh Hòa", "Áo Thun", 150000, 2,"datngu1",LocalDate.of(2025,02,04)));
+    od.add(new Order(2, 102, "Nguyễn Đình Đạt", "Quần Jean", 300000, 1,"datngu2",LocalDate.of(2025,03,04)));
+    od.add(new Order(3, 103, "Nguyễn Đăng Hanh", "Áo Sơ Mi", 200000, 3,"datngu3",LocalDate.of(2025,05,06)));
 }
 
 

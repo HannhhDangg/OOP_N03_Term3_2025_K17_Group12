@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lịch sử đơn hàng</title>
+</head>
+<body>
+    <h1>Xem lịch sử đơn hàng</h1>
+
+    <form method="post" action="/order-history">
+        <label>Mã khách hàng:</label>
+        <input type="number" name="customerId" required>
+        <button type="submit">Tìm kiếm</button>
+    </form>
+
+    <div th:if="${orders}">
+        <h2>Đơn hàng của khách hàng </h2>
+        <ul>
+            <li th:each="order : ${orders}" th:text="${order}"></li>
+        </ul>
+    </div>
+
+    <div th:if="${error}">
+        <p style="color: red;" th:text="${error}"></p>
+    </div>
+</body>
+</html>
