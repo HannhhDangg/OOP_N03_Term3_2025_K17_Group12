@@ -98,5 +98,9 @@ orders:
 ![image](https://github.com/user-attachments/assets/bdf9ec79-e895-49d1-b7a6-65bec1d23f89)
 Hiển thị ra danh sách đơn hàng đã tạo cùng với các chức năng thêm, sửa, xóa đơn hàng.
 
+products
+![image](https://github.com/user-attachments/assets/a9330612-6121-4b4c-98c2-2d09046621d9)
+Hiển thị danh sách sản phẩm, sửa, xóa, thêm sản phẩm.
+
 
 
