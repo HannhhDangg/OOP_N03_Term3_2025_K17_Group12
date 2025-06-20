@@ -16,7 +16,13 @@ public class OrderHistoryController {
     private OrderHistoryService orderHistoryService;
 
     @GetMapping("/order-history")
-    public String showForm() {
+    public String showHistory() {
+        return "history";
+    }
+
+    // Nếu bạn cũng muốn truy cập qua /history
+    @GetMapping("/history")
+    public String showHistoryPage() {
         return "history";
     }
 
@@ -30,4 +36,5 @@ public class OrderHistoryController {
         }
         return "history";
     }
+
 }

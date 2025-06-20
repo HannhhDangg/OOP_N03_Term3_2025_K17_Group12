@@ -21,9 +21,9 @@ public class OrderHistoryService {
     public List<Order> getOrdersByCustomerId(String customerId) {
         List<Order> result = new ArrayList<>();
         for (Order o : orders) {
-            if (o.getCustomerId() == customerId) {
-                result.add(o);
-            }
+            if (o.getCustomerId().equals(customerId)) {
+            result.add(o);
+        }
         }
         return result;
     }
