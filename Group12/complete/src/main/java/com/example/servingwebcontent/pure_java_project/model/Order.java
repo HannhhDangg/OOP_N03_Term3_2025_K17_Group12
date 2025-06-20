@@ -1,9 +1,16 @@
 package com.example.servingwebcontent.pure_java_project.model;
 
 import java.time.LocalDate;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "orders")
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int maDonHang;
+    
     private int maSp;
     private String tenKh;
     private String tenSp;

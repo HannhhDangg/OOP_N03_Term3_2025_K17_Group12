@@ -1,130 +1,80 @@
 package com.example.servingwebcontent.pure_java_project.service;
 
 import com.example.servingwebcontent.pure_java_project.model.Order;
+import com.example.servingwebcontent.pure_java_project.repository.OrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
-    private final List<Order> od = new ArrayList<>();
-    public OrderService() {
-    od.add(new Order(1, 101, "Nguyễn Mạnh Hòa", "Áo Thun", 150000, 2,"datngu1",LocalDate.of(2025,02,04)));
-    od.add(new Order(2, 102, "Nguyễn Đình Đạt", "Quần Jean", 300000, 1,"datngu2",LocalDate.of(2025,03,04)));
-    od.add(new Order(3, 103, "Nguyễn Đăng Hanh", "Áo Sơ Mi", 200000, 3,"datngu3",LocalDate.of(2025,05,06)));
-}
 
-
+    @Autowired
+    private OrderRepository orderRepository;
 
     // Thêm đơn hàng
-    public List<Order> addOrder(Order ord) {
-        try {
-            for (Order o : od) {
-                if (o.getMaSp() == ord.getMaSp()) {
-                    System.out.println("Đơn hàng với mã sản phẩm này đã tồn tại!");
-                    return od;
-                }
-            }
-            od.add(ord);
-            System.out.println("Đã thêm đơn hàng mới.");
-        } catch (Exception e) {
-            System.out.println("Lỗi khi thêm đơn hàng.");
-        } finally {
-            System.out.println("Kết thúc phương thức.");
+    public void addOrder(Order order) {
+        if (!orderRepository.existsById(order.getMaDonHang())) {
+            orderRepository.save(order);
+            System.out.println("✅ Đã thêm đơn hàng mới.");
+        } else {
+            System.out.println("⚠️ Mã đơn hàng đã tồn tại!");
         }
-        return od;
     }
 
-    // Sửa tên sản phẩm
-    public List<Order> editOrder(String ten_sp, int ma_sp) {
-        try {
-            boolean found = false;
-            for (Order o : od) {
-                if (o.getMaSp() == ma_sp) {
-                    o.setTenSp(ten_sp);
-                    System.out.println("Đã cập nhật tên sản phẩm.");
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                System.out.println("Không tìm thấy sản phẩm để cập nhật.");
-            }
-        } catch (Exception e) {
-            System.out.println("Lỗi khi sửa đơn hàng.");
-        } finally {
-            System.out.println("Kết thúc phương thức.");
+    // Sửa tên sản phẩm theo mã đơn hàng
+    public void editOrder(String tenSp, int maDonHang) {
+        Optional<Order> optionalOrder = orderRepository.findById(maDonHang);
+        if (optionalOrder.isPresent()) {
+            Order order = optionalOrder.get();
+            order.setTenSp(tenSp);
+            orderRepository.save(order);
+            System.out.println("✅ Đã cập nhật tên sản phẩm.");
+        } else {
+            System.out.println("❌ Không tìm thấy đơn hàng để cập nhật.");
         }
-        return od;
     }
 
-    // Xóa đơn hàng
-    public List<Order> deleteOrder(int ma_sp) {
-        try {
-            boolean removed = od.removeIf(o -> o.getMaSp() == ma_sp);
-            if (removed) {
-                System.out.println("Đã xóa đơn hàng.");
-            } else {
-                System.out.println("Không tìm thấy đơn hàng để xóa.");
-            }
-        } catch (Exception e) {
-            System.out.println("Lỗi khi xóa đơn hàng.");
-        } finally {
-            System.out.println("Kết thúc phương thức.");
+    // Xóa đơn hàng theo mã đơn hàng
+    public void deleteOrder(int maDonHang) {
+        if (orderRepository.existsById(maDonHang)) {
+            orderRepository.deleteById(maDonHang);
+            System.out.println("✅ Đã xóa đơn hàng.");
+        } else {
+            System.out.println("❌ Không tìm thấy đơn hàng để xóa.");
         }
-        return od;
     }
 
     // Lấy danh sách tất cả đơn hàng
     public List<Order> getAllOrders() {
-        try {
-            return od;
-        } catch (Exception e) {
-            System.out.println("Lỗi khi lấy danh sách đơn hàng.");
-            return new ArrayList<>();
-        } finally {
-            System.out.println("Kết thúc phương thức.");
-        }
+        return orderRepository.findAll();
     }
 
-    // Tính tổng tiền
+    // Tính tổng tiền tất cả đơn hàng
     public float getTotalMoney() {
-        float tong_tien = 0;
-        try {
-            for (Order o : od) {
-                tong_tien += o.getTongGia();
-            }
-        } catch (Exception e) {
-            System.out.println("Lỗi khi tính tổng tiền.");
-        } finally {
-            System.out.println("Kết thúc phương thức.");
-        }
-        return tong_tien;
+        return (float) orderRepository.findAll().stream()
+                .mapToDouble(Order::getTongGia)
+                .sum();
     }
 
-    // In hóa đơn
+    // In hóa đơn (console)
     public void inHoaDon() {
-        try {
-            if (od.isEmpty()) {
-                System.out.println("Không có đơn hàng nào để hiển thị.");
-                return;
-            }
-
-            System.out.println("========= DANH SÁCH ĐƠN HÀNG =========");
-            for (int i = 0; i < od.size(); i++) {
-                Order o = od.get(i);
-                System.out.println("Đơn hàng #" + (i + 1));
-                o.displayOrder(); // phương thức này phải được định nghĩa trong class Order
-                System.out.println("--------------------------------------");
-            }
-            System.out.println("Tổng tiền đơn hàng: " + getTotalMoney());
-            System.out.println("=======================================");
-        } catch (Exception e) {
-            System.out.println("Lỗi khi in hóa đơn.");
-        } finally {
-            System.out.println("Kết thúc phương thức.");
+        List<Order> orders = orderRepository.findAll();
+        if (orders.isEmpty()) {
+            System.out.println("📭 Không có đơn hàng nào để hiển thị.");
+            return;
         }
+
+        System.out.println("========= DANH SÁCH ĐƠN HÀNG =========");
+        int i = 1;
+        for (Order o : orders) {
+            System.out.println("Đơn hàng #" + (i++));
+            o.displayOrder(); // Phải có sẵn trong class Order
+            System.out.println("--------------------------------------");
+        }
+        System.out.println("Tổng tiền đơn hàng: " + getTotalMoney());
+        System.out.println("=======================================");
     }
 }

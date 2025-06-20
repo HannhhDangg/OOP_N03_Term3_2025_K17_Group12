@@ -30,19 +30,19 @@
         </tr>
     </table>
 
-    <h2> Sửa tên sản phẩm theo số lượng</h2>
+    <h2> Sửa tên sản phẩm theo Mã Sản Phẩm</h2>
     <form th:action="@{/products/sua-ten}" method="post">
+        <label>Mã Sản Phẩm:</label>
+        <input type="text" name="maSP" required>
         <label>Tên mới:</label>
-        <input type="text" name="tenMoi" required>
-        <label>Số lượng:</label>
-        <input type="number" name="soLuong" min="1" required>
+        <input type="text" name="tenMoi"  required>
         <button type="submit">Sửa tên</button>
     </form>
 
-    <h2> Xoá sản phẩm theo số lượng</h2>
+    <h2> Xoá sản phẩm theo Mã Sản phẩm <h2>
     <form th:action="@{/products/xoa}" method="post">
-        <label>Số lượng:</label>
-        <input type="number" name="soLuong" min="1" required>
+        <label>Mã SP:</label>
+        <input type="String" name="maSP"  required>
         <button type="submit">Xoá sản phẩm</button>
     </form>
     <h2> Thêm sản phẩm mới</h2>

@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <title>Danh sách Đơn hàng</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/orders.css}" /> <!-- gắn link trong Thymeleaf-->
+    <link rel="stylesheet" th:href="@{/css/orders.css}" />
     <style>
-        table { width: 80%; margin: auto; border-collapse: collapse; }
+        table { width: 90%; margin: auto; border-collapse: collapse; }
         th, td { padding: 8px; border: 1px solid #ccc; text-align: center; }
-        h2, h3 { text-align: center; }
+        h2, h3 { text-align: center; margin-top: 30px; }
+        form { text-align: center; margin-top: 20px; }
+        input { margin: 4px; padding: 6px; }
+        button { padding: 6px 12px; margin: 4px; }
     </style>
 </head>
 <body>
@@ -25,6 +28,8 @@
         <th>Giá SP</th>
         <th>Số lượng</th>
         <th>Thành tiền</th>
+        <th>Mã KH</th>
+        <th>Ngày đặt</th>
     </tr>
     </thead>
     <tbody>
@@ -36,6 +41,8 @@
             <td th:text="${order.giaSp}">150000</td>
             <td th:text="${order.soLuong}">2</td>
             <td th:text="${order.tongGia}">300000</td>
+            <td th:text="${order.customerId}">datngu1</td>
+            <td th:text="${order.orderDate}">2025-01-01</td>
         </tr>   
     </tbody>
 </table>
@@ -44,28 +51,30 @@
 
 <h2>Thêm đơn hàng mới</h2>
 <form th:action="@{/orders/add}" method="post">
-    <input type="number" name="maDonHang" placeholder="Mã ĐH" required>
+    <input type="number" name="maDonHang" placeholder="Mã Đơn Hàng" required>
     <input type="number" name="maSp" placeholder="Mã SP" required>
-    <input type="text" name="tenKh" placeholder="Tên KH" required>
-    <input type="text" name="tenSp" placeholder="Tên SP" required>
+    <input type="text" name="tenKh" placeholder="Tên Khách Hàng" required>
+    <input type="text" name="tenSp" placeholder="Tên Sản Phẩm" required>
     <input type="number" name="giaSp" placeholder="Giá SP" required>
     <input type="number" name="soLuong" placeholder="Số lượng" required>
+    <input type="text" name="customerId" placeholder="Mã KH" required>
+    <input type="date" name="orderDate" placeholder="Ngày đặt" required>
+    <br>
     <button type="submit">Thêm</button>
 </form>
 
 <h2>Sửa tên sản phẩm</h2>
 <form th:action="@{/orders/edit}" method="post">
-    <input type="number" name="maSp" placeholder="Mã SP" required>
+    <input type="number" name="maDonHang" placeholder="Mã Đơn Hàng" required>
     <input type="text" name="tenSp" placeholder="Tên mới" required>
     <button type="submit">Sửa</button>
 </form>
 
 <h2>Xoá đơn hàng</h2>
 <form th:action="@{/orders/delete}" method="post">
-    <input type="number" name="maSp" placeholder="Mã SP" required>
+    <input type="number" name="maDonHang" placeholder="Mã Đơn Hàng" required>
     <button type="submit">Xoá</button>
 </form>
-
 
 </body>
 </html>
