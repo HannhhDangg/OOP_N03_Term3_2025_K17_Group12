@@ -101,7 +101,8 @@ orders:
 Hiển thị ra danh sách đơn hàng đã tạo cùng với các chức năng thêm, sửa, xóa đơn hàng.
 
 products
-![image](https://github.com/user-attachments/assets/a9330612-6121-4b4c-98c2-2d09046621d9)
+![Screenshot 2025-06-20 090500](https://github.com/user-attachments/assets/efa30ac8-4475-486a-aaf4-f3d04095e1e0)
+
 Hiển thị danh sách sản phẩm, sửa, xóa, thêm sản phẩm.
 
 orderHistory :
