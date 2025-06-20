@@ -104,5 +104,11 @@ products
 ![image](https://github.com/user-attachments/assets/a9330612-6121-4b4c-98c2-2d09046621d9)
 Hiển thị danh sách sản phẩm, sửa, xóa, thêm sản phẩm.
 
+orderHistory :
+![orderHistory](https://github.com/user-attachments/assets/39c88c3b-efc4-457c-b5f9-e068603e227d)
+Xem lịch sử mua hàng của từng khách hàng.
+
+
+
 
 
