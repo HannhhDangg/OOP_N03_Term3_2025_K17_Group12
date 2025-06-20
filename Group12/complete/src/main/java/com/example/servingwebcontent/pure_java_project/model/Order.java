@@ -5,13 +5,12 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "orders")
-@GeneratedValue(strategy = GenerationType.IDENTITY)
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int maDonHang;
-    
     private int maSp;
+    
     private String tenKh;
     private String tenSp;
     private float giaSp;

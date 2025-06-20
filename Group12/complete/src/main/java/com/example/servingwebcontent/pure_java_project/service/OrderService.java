@@ -5,8 +5,11 @@ import com.example.servingwebcontent.pure_java_project.repository.OrderRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class OrderService {
@@ -15,14 +18,15 @@ public class OrderService {
     private OrderRepository orderRepository;
 
     // Thêm đơn hàng
+    
     public void addOrder(Order order) {
-        if (!orderRepository.existsById(order.getMaDonHang())) {
-            orderRepository.save(order);
-            System.out.println("✅ Đã thêm đơn hàng mới.");
-        } else {
-            System.out.println("⚠️ Mã đơn hàng đã tồn tại!");
-        }
-    }
+    order.setMaSp(new Random().nextInt(100000)); // hoặc logic sinh số tự tăng
+    order.setCustomerId("KH" + System.currentTimeMillis()); // mã KH tự sinh
+    order.setOrderDate(LocalDate.now(ZoneId.of("Asia/Ho_Chi_Minh")));; // ✅ Gán ngày hôm nay
+    orderRepository.save(order);
+    System.out.println("✅ Đã thêm đơn hàng mới.");
+}
+
 
     // Sửa tên sản phẩm theo mã đơn hàng
     public void editOrder(String tenSp, int maDonHang) {
@@ -77,4 +81,5 @@ public class OrderService {
         System.out.println("Tổng tiền đơn hàng: " + getTotalMoney());
         System.out.println("=======================================");
     }
+    
 }

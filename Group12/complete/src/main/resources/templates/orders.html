@@ -51,21 +51,22 @@
 
 <h2>Thêm đơn hàng mới</h2>
 <form th:action="@{/orders/add}" method="post">
-    <input type="number" name="maDonHang" placeholder="Mã Đơn Hàng" required>
-    <input type="number" name="maSp" placeholder="Mã SP" required>
+    <!-- KHÔNG NHẬP maDonHang vì ID tự sinh -->
+    <!-- <input type="number" name="maSp" placeholder="Mã SP" required> -->
     <input type="text" name="tenKh" placeholder="Tên Khách Hàng" required>
     <input type="text" name="tenSp" placeholder="Tên Sản Phẩm" required>
     <input type="number" name="giaSp" placeholder="Giá SP" required>
     <input type="number" name="soLuong" placeholder="Số lượng" required>
-    <input type="text" name="customerId" placeholder="Mã KH" required>
-    <input type="date" name="orderDate" placeholder="Ngày đặt" required>
+    <!-- <input type="text" name="customerId" placeholder="Mã KH" required> -->
+    <!-- <input type="date" name="orderDate" required> -->
     <br>
     <button type="submit">Thêm</button>
 </form>
 
+
 <h2>Sửa tên sản phẩm</h2>
 <form th:action="@{/orders/edit}" method="post">
-    <input type="number" name="maDonHang" placeholder="Mã Đơn Hàng" required>
+    <!-- <input type="number" name="maDonHang" placeholder="Mã Đơn Hàng" required> -->
     <input type="text" name="tenSp" placeholder="Tên mới" required>
     <button type="submit">Sửa</button>
 </form>
