@@ -34,14 +34,14 @@ public class ProductController {
         return "redirect:/products";
     }
     @PostMapping("/products/sua-ten")
-    public String suaTen(@RequestParam String tenMoi, @RequestParam int soLuong) {
-        productsList.suaTenSanPhamTheoSoLuong(tenMoi, soLuong);
+    public String suaTen(@RequestParam String maSP,@RequestParam String tenMoi) {
+        productsList.suaTenSanPhamTheoMaSanPham(maSP,tenMoi);
         return "redirect:/products";
     }
 
     @PostMapping("/products/xoa")
-    public String xoa(@RequestParam int soLuong) {
-        productsList.xoaSanPhamTheoSoLuong(soLuong);
+    public String xoa(@RequestParam String maSP) {
+        productsList.xoaSanPhamTheoMaSanPham(maSP);
         return "redirect:/products";
     }
 }
