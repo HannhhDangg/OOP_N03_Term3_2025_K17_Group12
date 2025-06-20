@@ -34,16 +34,17 @@ public class ProductsList {
         }
     }
 
-    // Sửa tên sản phẩm theo số lượng
-    public void suaTenSanPhamTheoSoLuong(String tenMoi, int soLuong) {
+     // Sửa tên sản phẩm theo Mã sản Phẩm
+    public void suaTenSanPhamTheoMaSanPham(String maSP,String tenMoi) {
         try {
             for (Product sp : danhSachSanPham) {
-                if (sp.getSoLuong() == soLuong) {
+                 if (sp.getMaSP().equalsIgnoreCase(maSP)) {
                     danhSachSanPham.set(danhSachSanPham.indexOf(sp),
-                        new Product(
-                            sp.getMaSP(), tenMoi, sp.getLoai(), sp.getSize(),
-                            sp.getMauSac(), sp.getGia(), sp.getSoLuong()
-                        ));
+                    new Product(
+                        sp.getMaSP(), tenMoi, sp.getLoai(), sp.getSize(),
+                        sp.getMauSac(), sp.getGia(), sp.getSoLuong()
+                    ));
+                    break; 
                 }
             }
         } catch (Exception e) {
@@ -53,10 +54,10 @@ public class ProductsList {
         }
     }
 
-    // Xóa sản phẩm theo số lượng
-    public void xoaSanPhamTheoSoLuong(int soLuong) {
+    // Xóa sản phẩm theo Mã sản phẩm
+    public void xoaSanPhamTheoMaSanPham(String maSP) {
         try {
-            danhSachSanPham.removeIf(sp -> sp.getSoLuong() == soLuong);
+            danhSachSanPham.removeIf(sp -> sp.getMaSP() .equalsIgnoreCase(maSP));
         } catch (Exception e) {
             System.out.println("Lỗi khi xóa sản phẩm: " + e.getMessage());
         } finally {
