@@ -22,9 +22,9 @@ public class OrderService {
     public void addOrder(Order order) {
     order.setMaSp(new Random().nextInt(100000)); // hoặc logic sinh số tự tăng
     order.setCustomerId("KH" + System.currentTimeMillis()); // mã KH tự sinh
-    order.setOrderDate(LocalDate.now(ZoneId.of("Asia/Ho_Chi_Minh")));; // ✅ Gán ngày hôm nay
+    order.setOrderDate(LocalDate.now(ZoneId.of("Asia/Ho_Chi_Minh")));; //Gán ngày hôm nay
     orderRepository.save(order);
-    System.out.println("✅ Đã thêm đơn hàng mới.");
+    System.out.println("Đã thêm đơn hàng mới.");
 }
 
 
@@ -35,9 +35,9 @@ public class OrderService {
             Order order = optionalOrder.get();
             order.setTenSp(tenSp);
             orderRepository.save(order);
-            System.out.println("✅ Đã cập nhật tên sản phẩm.");
+            System.out.println("Đã cập nhật tên sản phẩm.");
         } else {
-            System.out.println("❌ Không tìm thấy đơn hàng để cập nhật.");
+            System.out.println("Không tìm thấy đơn hàng để cập nhật.");
         }
     }
 
@@ -45,9 +45,9 @@ public class OrderService {
     public void deleteOrder(int maDonHang) {
         if (orderRepository.existsById(maDonHang)) {
             orderRepository.deleteById(maDonHang);
-            System.out.println("✅ Đã xóa đơn hàng.");
+            System.out.println("Đã xóa đơn hàng.");
         } else {
-            System.out.println("❌ Không tìm thấy đơn hàng để xóa.");
+            System.out.println("Không tìm thấy đơn hàng để xóa.");
         }
     }
 
@@ -67,7 +67,7 @@ public class OrderService {
     public void inHoaDon() {
         List<Order> orders = orderRepository.findAll();
         if (orders.isEmpty()) {
-            System.out.println("📭 Không có đơn hàng nào để hiển thị.");
+            System.out.println("Không có đơn hàng nào để hiển thị.");
             return;
         }
 
