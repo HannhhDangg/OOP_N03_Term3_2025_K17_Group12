@@ -1,5 +1,9 @@
-
 package com.example.servingwebcontent.pure_java_project.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "products")
 public class Product {
     private String maSP;
     private String tenSP;

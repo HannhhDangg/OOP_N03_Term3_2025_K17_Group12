@@ -1,7 +1,12 @@
 package com.example.servingwebcontent.pure_java_project.service;
 
+import com.example.servingwebcontent.pure_java_project.model.Customer;
 import com.example.servingwebcontent.pure_java_project.model.Order;
+import com.example.servingwebcontent.pure_java_project.model.Product;
+import com.example.servingwebcontent.pure_java_project.repository.CustomerRepository;
 import com.example.servingwebcontent.pure_java_project.repository.OrderRepository;
+import com.example.servingwebcontent.pure_java_project.repository.ProductRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +14,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
+// import java.util.Random;
 
 @Service
 public class OrderService {
@@ -17,15 +22,43 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
+
+
     // Thêm đơn hàng
     
-    public void addOrder(Order order) {
-    order.setMaSp(new Random().nextInt(100000)); // hoặc logic sinh số tự tăng
-    order.setCustomerId("KH" + System.currentTimeMillis()); // mã KH tự sinh
-    order.setOrderDate(LocalDate.now(ZoneId.of("Asia/Ho_Chi_Minh")));; //Gán ngày hôm nay
+    public String addOrder(Order order) {
+    // Kiểm tra trùng mã đơn hàng
+    if (orderRepository.existsById(order.getMaDonHang())) {
+        return "Đơn hàng đã tồn tại!";
+    }
+
+    // Tìm sản phẩm
+    Product product = productRepository.findById(String.valueOf(order.getMaSp())).orElse(null);
+    if (product == null) {
+        return "Sản phẩm không tồn tại!";
+    }
+
+    // Tìm khách hàng
+    Customer customer = customerRepository.findById(order.getCustomerId()).orElse(null);
+    if (customer == null) {
+        return "Khách hàng không tồn tại!";
+    }
+
+    // Gán thông tin phụ
+    order.setTenSp(product.getTenSP());
+    order.setGiaSp((float) product.getGia());
+    order.setTenKh(customer.getCustomerName());
+    order.setOrderDate(LocalDate.now(ZoneId.of("Asia/Ho_Chi_Minh")));
+
     orderRepository.save(order);
-    System.out.println("Đã thêm đơn hàng mới.");
+    return "Đã thêm đơn hàng thành công!";
 }
+
 
 
     // Sửa tên sản phẩm theo mã đơn hàng
