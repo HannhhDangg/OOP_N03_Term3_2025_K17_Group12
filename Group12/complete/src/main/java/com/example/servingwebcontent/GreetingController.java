@@ -3,15 +3,21 @@ package com.example.servingwebcontent;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+// import org.springframework.web.bind.annotation.RequestParam;
+import com.example.servingwebcontent.pure_java_project.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 public class GreetingController {
+	@Autowired
+    private OrderService orderService;
 
-	@GetMapping("/greeting")
-	public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-		model.addAttribute("name", name);
-		return "greeting";
-	}
+	@GetMapping("/")
+	public String hienThiDonHang(Model model) {
+        model.addAttribute("orders", orderService.getAllOrders());
+        model.addAttribute("tongTien", orderService.getTotalMoney());
+        return "orders";
+    }
 
+	
 }
