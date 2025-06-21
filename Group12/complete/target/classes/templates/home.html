@@ -1,38 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/home.css}" />
 <head>
-<meta charset="UTF-8">
-<title>Trang Chủ</title>
-<style>
-body {
-font-family: 'Segoe UI', sans-serif;
-text-align: center;
-margin-top: 50px;
-}
-h1 {
-margin-bottom: 40px;
-}
-a {
-display: inline-block;
-margin: 15px;
-padding: 12px 24px;
-background-color: #4CAF50;
-color: white;
-text-decoration: none;
-border-radius: 6px;
-}
-a:hover {
-background-color: #45a049;
-}
-</style>
+    <meta charset="UTF-8">
+    <title>Trang Chủ - Shop Quần Áo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    
 </head>
 <body>
 
-<h1>📦 Hệ Thống Quản Lý Bán Hàng</h1>
+<h1>Shop Quần Áo - Trang Chủ</h1>
 
-<a th:href="@{/orders}">📋 Đơn Hàng</a>
-<a th:href="@{/products}">📦 Sản Phẩm</a>
-<a th:href="@{/history}">📜 Lịch Sử</a>
+<div class="nav-container">
+    <a th:href="@{/orders}" class="nav-button"> Đơn hàng</a>
+    <a th:href="@{/products}" class="nav-button"> Sản phẩm</a>
+    <a th:href="@{/history}" class="nav-button">Lịch sử giao dịch</a>
+</div>
 
 </body>
 </html>

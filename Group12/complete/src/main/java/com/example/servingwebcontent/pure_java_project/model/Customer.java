@@ -1,13 +1,19 @@
 package com.example.servingwebcontent.pure_java_project.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "customers")
 public class Customer {
+    @Id
     private String customerId;
+
     private String customerName;
     private String email;
     private String password;
     private String phoneNumber;
 
-    public Customer() {} // Default constructor cần cho Spring Binding
+    public Customer() {}
 
     public Customer(String customerId, String customerName, String email, String password, String phoneNumber) {
         this.customerId = customerId;
@@ -17,6 +23,7 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
+    // Getters & Setters
     public String getCustomerId() { return customerId; }
     public void setCustomerId(String customerId) { this.customerId = customerId; }
 

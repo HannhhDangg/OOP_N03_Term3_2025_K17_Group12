@@ -1,0 +1,35 @@
+body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 42px;
+            margin-bottom: 40px;
+        }
+
+        .nav-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 20px 40px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #0056b3;
+        }

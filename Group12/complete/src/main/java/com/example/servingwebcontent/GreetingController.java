@@ -16,7 +16,7 @@ public class GreetingController {
 	public String hienThiDonHang(Model model) {
         model.addAttribute("orders", orderService.getAllOrders());
         model.addAttribute("tongTien", orderService.getTotalMoney());
-        return "orders";
+        return "home";
     }
 
 	
