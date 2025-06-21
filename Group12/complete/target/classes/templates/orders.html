@@ -56,9 +56,13 @@
     </select>
 
     <select name="maSp" required>
-        <option value="" disabled selected>-- Chọn sản phẩm --</option>
-        <option th:each="sp : ${products}" th:value="${sp.maSP}" th:text="${sp.tenSP} + ' (' + sp.maSP + ')'"></option>
+    <option value="" disabled selected>-- Chọn sản phẩm --</option>
+    <option th:each="sp : ${products}" 
+            th:value="${sp.maSP}" 
+            th:text="|${sp.tenSP} (${sp.maSP})|">
+    </option>
     </select>
+
 
     <input type="number" name="soLuong" placeholder="Số lượng" required min="1">
     <br>

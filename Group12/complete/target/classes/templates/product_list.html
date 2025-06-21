@@ -67,29 +67,44 @@
 </form>
 
 <h2>➕ Thêm sản phẩm mới</h2>
-<form th:action="@{/products/them}" method="post">
-    <label for="maSPNew">Mã SP:</label>
-    <input type="text" name="maSP" id="maSPNew" required><br>
+<form th:action="@{/products/them}" method="post" style="display: flex; flex-direction: column; align-items: center; gap: 10px; max-width: 600px; margin: auto;">
+    
+    <div style="width: 100%; display: flex; justify-content: space-between;">
+        <label for="maSPNew" style="flex: 1;">Mã SP:</label>
+        <input type="text" name="maSP" id="maSPNew" style="flex: 2;" required>
+    </div>
 
-    <label for="tenSP">Tên SP:</label>
-    <input type="text" name="tenSP" id="tenSP" required><br>
+    <div style="width: 100%; display: flex; justify-content: space-between;">
+        <label for="tenSP" style="flex: 1;">Tên SP:</label>
+        <input type="text" name="tenSP" id="tenSP" style="flex: 2;" required>
+    </div>
 
-    <label for="loai">Loại:</label>
-    <input type="text" name="loai" id="loai" required><br>
+    <div style="width: 100%; display: flex; justify-content: space-between;">
+        <label for="loai" style="flex: 1;">Loại:</label>
+        <input type="text" name="loai" id="loai" style="flex: 2;" required>
+    </div>
 
-    <label for="size">Size:</label>
-    <input type="text" name="size" id="size" required><br>
+    <div style="width: 100%; display: flex; justify-content: space-between;">
+        <label for="size" style="flex: 1;">Size:</label>
+        <input type="text" name="size" id="size" style="flex: 2;" required>
+    </div>
 
-    <label for="mauSac">Màu sắc:</label>
-    <input type="text" name="mauSac" id="mauSac" required><br>
+    <div style="width: 100%; display: flex; justify-content: space-between;">
+        <label for="mauSac" style="flex: 1;">Màu sắc:</label>
+        <input type="text" name="mauSac" id="mauSac" style="flex: 2;" required>
+    </div>
 
-    <label for="gia">Giá (VNĐ):</label>
-    <input type="number" step="1000" name="gia" id="gia" required><br>
+    <div style="width: 100%; display: flex; justify-content: space-between;">
+        <label for="gia" style="flex: 1;">Giá (VNĐ):</label>
+        <input type="number" step="1000" name="gia" id="gia" style="flex: 2;" required>
+    </div>
 
-    <label for="soLuong">Số lượng:</label>
-    <input type="number" name="soLuong" id="soLuong" min="1" required><br>
+    <div style="width: 100%; display: flex; justify-content: space-between;">
+        <label for="soLuong" style="flex: 1;">Số lượng:</label>
+        <input type="number" name="soLuong" id="soLuong" min="1" style="flex: 2;" required>
+    </div>
 
-    <button type="submit">Thêm sản phẩm</button>
+    <button type="submit" style="margin-top: 15px;">Thêm sản phẩm</button>
 </form>
 
 </body>
