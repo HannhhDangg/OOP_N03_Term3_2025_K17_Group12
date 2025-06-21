@@ -23,27 +23,26 @@
     <tr>
         <th>Mã ĐH</th>
         <th>Mã SP</th>
-        <th>Tên KH</th>
         <th>Tên SP</th>
         <th>Giá SP</th>
         <th>Số lượng</th>
         <th>Thành tiền</th>
+        <th>Tên KH</th>
         <th>Mã KH</th>
         <th>Ngày đặt</th>
     </tr>
     </thead>
     <tbody>
         <tr th:each="order : ${orders}">
-            <td th:text="${order.maDonHang}">1</td>
-            <td th:text="${order.maSp}">101</td>
-            <td th:text="${order.tenKh}">Nguyễn Văn A</td>
+            <td th:text="${order.maSp}">SP01</td>
             <td th:text="${order.tenSp}">Áo Thun</td>
             <td th:text="${order.giaSp}">150000</td>
             <td th:text="${order.soLuong}">2</td>
             <td th:text="${order.tongGia}">300000</td>
-            <td th:text="${order.customerId}">datngu1</td>
+            <td th:text="${order.tenKh}">Nguyễn Văn A</td>
+            <td th:text="${order.customer != null ? order.customer.customerId : 'N/A'}">KH123</td>
             <td th:text="${order.orderDate}">2025-01-01</td>
-        </tr>   
+        </tr>
     </tbody>
 </table>
 
@@ -51,18 +50,20 @@
 
 <h2>Thêm đơn hàng mới</h2>
 <form th:action="@{/orders/add}" method="post">
-    <!-- KHÔNG NHẬP maDonHang vì ID tự sinh -->
-    <!-- <input type="number" name="maSp" placeholder="Mã SP" required> -->
-    <input type="text" name="tenKh" placeholder="Tên Khách Hàng" required>
-    <input type="text" name="tenSp" placeholder="Tên Sản Phẩm" required>
-    <input type="number" name="giaSp" placeholder="Giá SP" required>
-    <input type="number" name="soLuong" placeholder="Số lượng" required>
-    <!-- <input type="text" name="customerId" placeholder="Mã KH" required> -->
-    <!-- <input type="date" name="orderDate" required> -->
+    <select name="customerId" required>
+        <option value="" disabled selected>-- Chọn khách hàng --</option>
+        <option th:each="kh : ${customers}" th:value="${kh.customerId}" th:text="${kh.customerName} + ' (' + kh.customerId + ')'"></option>
+    </select>
+
+    <select name="maSp" required>
+        <option value="" disabled selected>-- Chọn sản phẩm --</option>
+        <option th:each="sp : ${products}" th:value="${sp.maSP}" th:text="${sp.tenSP} + ' (' + sp.maSP + ')'"></option>
+    </select>
+
+    <input type="number" name="soLuong" placeholder="Số lượng" required min="1">
     <br>
     <button type="submit">Thêm</button>
 </form>
-
 
 <h2>Sửa tên sản phẩm</h2>
 <form th:action="@{/orders/edit}" method="post">
@@ -70,7 +71,6 @@
     <input type="text" name="tenSp" placeholder="Tên sản phẩm mới" required>
     <button type="submit">Sửa</button>
 </form>
-
 
 <h2>Xoá đơn hàng</h2>
 <form th:action="@{/orders/delete}" method="post">

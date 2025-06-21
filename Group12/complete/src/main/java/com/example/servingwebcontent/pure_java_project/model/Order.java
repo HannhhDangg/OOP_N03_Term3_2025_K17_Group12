@@ -9,65 +9,97 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int maDonHang;
-    private int maSp;
-    
-    private String tenKh;
-    private String tenSp;
-    private float giaSp;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
     private int soLuong;
-    private String customerId;
     private LocalDate orderDate;
 
-    public Order() {} // Cần thiết cho Spring (default constructor)
+    public Order() {}
 
-    public Order(int maDonHang, int maSp, String tenKh, String tenSp, float giaSp, int soLuong,String customerId,LocalDate orderDate) {
-        this.maDonHang = maDonHang;
-        this.maSp = maSp;
-        this.tenKh = tenKh;
-        this.tenSp = tenSp;
-        this.giaSp = giaSp;
+    public Order(Customer customer, Product product, int soLuong, LocalDate orderDate) {
+        this.customer = customer;
+        this.product = product;
         this.soLuong = soLuong;
-        this.customerId = customerId;
         this.orderDate = orderDate;
     }
 
+    // ✅ An toàn hơn: kiểm tra null
     public float getTongGia() {
-        return this.giaSp * this.soLuong;
-    }
-
-    // Getters and Setters
-    public int getMaDonHang() { return maDonHang; }
-    public void setMaDonHang(int maDonHang) { this.maDonHang = maDonHang; }
-
-    public int getMaSp() { return maSp; }
-    public void setMaSp(int maSp) { this.maSp = maSp; }
-
-    public String getTenKh() { return tenKh; }
-    public void setTenKh(String tenKh) { this.tenKh = tenKh; }
-
-    public String getTenSp() { return tenSp; }
-    public void setTenSp(String tenSp) { this.tenSp = tenSp; }
-
-    public float getGiaSp() { return giaSp; }
-    public void setGiaSp(float giaSp) { this.giaSp = giaSp; }
-
-    public int getSoLuong() { return soLuong; }
-    public void setSoLuong(int soLuong) { this.soLuong = soLuong; }
-
-    public String getCustomerId() {return customerId;}
-    public void setCustomerId(String customerId){ this.customerId = customerId;}
-
-    public LocalDate getOrderDate() { return orderDate; }
-    public void setOrderDate(LocalDate orderDate){this.orderDate = orderDate;}
-
-    public void displayOrder() {
-    System.out.println("Mã đơn: " + maDonHang);
-    System.out.println("Mã sản phẩm: " + maSp);
-    System.out.println("Tên KH: " + tenKh);
-    System.out.println("Tên SP: " + tenSp);
-    System.out.println("Giá SP: " + giaSp);
-    System.out.println("Số lượng: " + soLuong);
-    System.out.println("Thành tiền: " + getTongGia());
+    return (float) ((product != null ? product.getGia() : 0) * soLuong);
 }
 
+    // ✅ Getter để hiển thị trong Thymeleaf
+    public String getTenKh() {
+        return customer != null ? customer.getCustomerName() : "";
+    }
+
+    public String getMaSp() {
+        return product != null ? product.getMaSP() : "";
+    }
+
+    public String getTenSp() {
+        return product != null ? product.getTenSP() : "";
+    }
+
+    public float getGiaSp() {
+        return (float) ((product != null ? product.getGia() : 0) * soLuong);
+    }
+
+    public int getMaDonHang() {
+        return maDonHang;
+    }
+
+    public void setMaDonHang(int maDonHang) {
+        this.maDonHang = maDonHang;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
+
+    public LocalDate getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
+    }
+
+
+    // ✅ Hiển thị an toàn
+    public void displayOrder() {
+        System.out.println("Mã đơn: " + maDonHang);
+        System.out.println("Khách hàng: " + getTenKh());
+        System.out.println("Sản phẩm: " + getTenSp());
+        System.out.println("Giá: " + getGiaSp());
+        System.out.println("Số lượng: " + soLuong);
+        System.out.println("Thành tiền: " + getTongGia());
+    }
 }

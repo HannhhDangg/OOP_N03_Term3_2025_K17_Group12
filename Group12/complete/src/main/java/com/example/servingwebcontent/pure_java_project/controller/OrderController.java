@@ -1,6 +1,7 @@
 package com.example.servingwebcontent.pure_java_project.controller;
 
-import com.example.servingwebcontent.pure_java_project.model.Order;
+import com.example.servingwebcontent.pure_java_project.repository.CustomerRepository;
+import com.example.servingwebcontent.pure_java_project.repository.ProductRepository;
 import com.example.servingwebcontent.pure_java_project.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,32 +14,47 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
+
     // Hiển thị danh sách đơn hàng
     @GetMapping("/orders")
     public String hienThiDonHang(Model model) {
         model.addAttribute("orders", orderService.getAllOrders());
         model.addAttribute("tongTien", orderService.getTotalMoney());
+
+        // Thêm danh sách khách hàng và sản phẩm để hiện trong dropdown
+        model.addAttribute("customers", customerRepository.findAll());
+        model.addAttribute("products", productRepository.findAll());
+
         return "orders";
     }
 
-    // Thêm đơn hàng mới
+
+    // Thêm đơn hàng mới (theo customerId và maSp)
     @PostMapping("/orders/add")
-    public String themDonHang(@ModelAttribute Order order) {
-        orderService.addOrder(order);
+    public String themDonHang(@RequestParam String customerId,
+                            @RequestParam String maSp,
+                            @RequestParam int soLuong) {
+        orderService.addOrder(customerId, maSp, soLuong);
         return "redirect:/orders";
     }
 
-    // Sửa tên sản phẩm theo mã đơn hàng
+    // Sửa tên sản phẩm
     @PostMapping("/orders/edit")
-    public String suaTenSanPham(@RequestParam int maDonHang, @RequestParam String tenSp) {
-        orderService.editOrder(tenSp, maDonHang); // sửa đúng theo maDonHang
+    public String suaTenSanPham(@RequestParam int maDonHang,
+                            @RequestParam String tenSp) {
+        orderService.editOrderProductName(maDonHang, tenSp);
         return "redirect:/orders";
     }
 
-    // Xoá đơn hàng theo mã đơn hàng
+    // Xoá đơn hàng
     @PostMapping("/orders/delete")
     public String xoaDonHang(@RequestParam int maDonHang) {
-        orderService.deleteOrder(maDonHang); // sửa đúng theo maDonHang
+        orderService.deleteOrder(maDonHang);
         return "redirect:/orders";
     }
 }

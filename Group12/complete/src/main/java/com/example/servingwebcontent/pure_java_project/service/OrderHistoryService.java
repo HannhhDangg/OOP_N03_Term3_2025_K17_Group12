@@ -2,29 +2,31 @@ package com.example.servingwebcontent.pure_java_project.service;
 
 import com.example.servingwebcontent.pure_java_project.model.Order;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDate;
-
 
 @Service
 public class OrderHistoryService {
     private final List<Order> orders = new ArrayList<>();
 
     public OrderHistoryService() {
-        // Dữ liệu mẫu
-        orders.add(new Order(1, 101, "Nguyễn Mạnh Hòa", "Áo Thun", 150000, 2,"datngu1",LocalDate.of(2025,02,04)));
-        orders.add(new Order(2, 102, "Nguyễn Đình Đạt", "Quần Jean", 300000, 1,"datngu2",LocalDate.of(2025,03,04)));
-        orders.add(new Order(3, 103, "Nguyễn Đăng Hanh", "Áo Sơ Mi", 200000, 3,"datngu3",LocalDate.of(2025,05,06)));
+        // Có thể khởi tạo mẫu đơn hàng ở đây nếu cần
     }
 
+    // Lọc đơn hàng theo mã khách hàng
     public List<Order> getOrdersByCustomerId(String customerId) {
         List<Order> result = new ArrayList<>();
         for (Order o : orders) {
-            if (o.getCustomerId().equals(customerId)) {
-            result.add(o);
-        }
+            if (o.getCustomer() != null && o.getCustomer().getCustomerId().equals(customerId)) {
+                result.add(o);
+            }
         }
         return result;
+    }
+
+    // Thêm đơn hàng vào lịch sử (tuỳ chọn nếu cần lưu cục bộ)
+    public void addOrderToHistory(Order order) {
+        orders.add(order);
     }
 }
