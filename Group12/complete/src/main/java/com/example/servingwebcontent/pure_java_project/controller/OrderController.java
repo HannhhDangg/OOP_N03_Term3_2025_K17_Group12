@@ -21,6 +21,11 @@ public class OrderController {
         return "orders";
     }
 
+    @GetMapping("/")
+    public String trangChu() {
+        return "home";
+    }
+
     // Thêm đơn hàng mới
     @PostMapping("/orders/add")
     public String themDonHang(@ModelAttribute Order order) {

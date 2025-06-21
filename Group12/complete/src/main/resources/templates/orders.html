@@ -66,10 +66,11 @@
 
 <h2>Sửa tên sản phẩm</h2>
 <form th:action="@{/orders/edit}" method="post">
-    <!-- <input type="number" name="maDonHang" placeholder="Mã Đơn Hàng" required> -->
-    <input type="text" name="tenSp" placeholder="Tên mới" required>
+    <input type="number" name="maDonHang" placeholder="Mã Đơn Hàng" required>
+    <input type="text" name="tenSp" placeholder="Tên sản phẩm mới" required>
     <button type="submit">Sửa</button>
 </form>
+
 
 <h2>Xoá đơn hàng</h2>
 <form th:action="@{/orders/delete}" method="post">
