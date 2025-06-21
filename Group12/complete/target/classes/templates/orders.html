@@ -5,48 +5,47 @@
     <title>Danh sách Đơn hàng</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/orders.css}" />
-    <style>
-        table { width: 90%; margin: auto; border-collapse: collapse; }
-        th, td { padding: 8px; border: 1px solid #ccc; text-align: center; }
-        h2, h3 { text-align: center; margin-top: 30px; }
-        form { text-align: center; margin-top: 20px; }
-        input { margin: 4px; padding: 6px; }
-        button { padding: 6px 12px; margin: 4px; }
-    </style>
 </head>
 <body>
 
 <h2>Danh sách đơn hàng</h2>
 
-<table>
-    <thead>
-    <tr>
-        <th>Mã ĐH</th>
-        <th>Mã SP</th>
-        <th>Tên SP</th>
-        <th>Giá SP</th>
-        <th>Số lượng</th>
-        <th>Thành tiền</th>
-        <th>Tên KH</th>
-        <th>Mã KH</th>
-        <th>Ngày đặt</th>
-    </tr>
-    </thead>
-    <tbody>
+<div th:if="${orders != null and #lists.isEmpty(orders)}">
+    <p style="text-align:center; color:gray;">Chưa có đơn hàng nào.</p>
+</div>
+
+<div th:if="${orders != null and !#lists.isEmpty(orders)}">
+    <table>
+        <thead>
+        <tr>
+            <th>Mã ĐH</th>
+            <th>Mã SP</th>
+            <th>Tên SP</th>
+            <th>Giá SP</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th>Tên KH</th>
+            <th>Mã KH</th>
+            <th>Ngày đặt</th>
+        </tr>
+        </thead>
+        <tbody>
         <tr th:each="order : ${orders}">
-            <td th:text="${order.maSp}">SP01</td>
-            <td th:text="${order.tenSp}">Áo Thun</td>
-            <td th:text="${order.giaSp}">150000</td>
-            <td th:text="${order.soLuong}">2</td>
-            <td th:text="${order.tongGia}">300000</td>
-            <td th:text="${order.tenKh}">Nguyễn Văn A</td>
-            <td th:text="${order.customer != null ? order.customer.customerId : 'N/A'}">KH123</td>
+            <td th:text="${order.maDonHang}">DH01</td>
+            <td th:text="${order.product != null ? order.product.maSP : 'N/A'}">SP01</td>
+            <td th:text="${order.product != null ? order.product.tenSP : 'N/A'}">Tên SP</td>
+            <td th:text="${order.product != null ? order.product.giaSP : 0}">0</td>
+            <td th:text="${order.soLuong}">0</td>
+            <td th:text="${order.product != null ? order.soLuong * order.product.giaSP : 0}">0</td>
+            <td th:text="${order.customer != null ? order.customer.customerName : 'N/A'}">Tên KH</td>
+            <td th:text="${order.customer != null ? order.customer.customerId : 'N/A'}">KH01</td>
             <td th:text="${order.orderDate}">2025-01-01</td>
         </tr>
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
-<h3>Tổng tiền đơn hàng: <span th:text="${tongTien} + ' đ'">0</span></h3>
+    <h3>Tổng tiền đơn hàng: <span th:text="${tongTien} + ' đ'">0 đ</span></h3>
+</div>
 
 <h2>Thêm đơn hàng mới</h2>
 <form th:action="@{/orders/add}" method="post">
@@ -56,13 +55,11 @@
     </select>
 
     <select name="maSp" required>
-    <option value="" disabled selected>-- Chọn sản phẩm --</option>
-    <option th:each="sp : ${products}" 
-            th:value="${sp.maSP}" 
-            th:text="|${sp.tenSP} (${sp.maSP})|">
-    </option>
+        <option value="" disabled selected>-- Chọn sản phẩm --</option>
+        <th:block th:each="sp : ${products}">
+            <option th:value="${sp.maSP}" th:text="|${sp.tenSP} (${sp.maSP})|"></option>
+        </th:block>
     </select>
-
 
     <input type="number" name="soLuong" placeholder="Số lượng" required min="1">
     <br>
