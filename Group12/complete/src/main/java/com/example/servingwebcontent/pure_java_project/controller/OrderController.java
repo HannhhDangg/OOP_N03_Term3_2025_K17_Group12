@@ -2,7 +2,6 @@ package com.example.servingwebcontent.pure_java_project.controller;
 
 import com.example.servingwebcontent.pure_java_project.repository.CustomerRepository;
 import com.example.servingwebcontent.pure_java_project.repository.ProductRepository;
-import com.example.servingwebcontent.pure_java_project.service.ProductsList;
 import com.example.servingwebcontent.pure_java_project.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

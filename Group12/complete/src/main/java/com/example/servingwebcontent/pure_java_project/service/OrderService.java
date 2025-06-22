@@ -49,26 +49,47 @@ public class OrderService {
     
 
         if (customerOpt.isPresent() && productOpt.isPresent()) {
+        Customer customer = customerOpt.get();
+        Product product = productOpt.get();
+
+        // ✅ Kiểm tra số lượng tồn kho
+        if (soLuong > product.getSoLuong()) {
+                throw new IllegalArgumentException("Số lượng đặt hàng vượt quá số lượng tồn kho. Chỉ còn " + product.getSoLuong() + " sản phẩm.");
+            }
+
+            // ✅ Trừ số lượng tồn kho
+            product.setSoLuong(product.getSoLuong() - soLuong);
+            productRepository.save(product);  // Cập nhật lại sản phẩm trong DB
+
             Order order = new Order();
-            order.setCustomer(customerOpt.get());
-            order.setProduct(productOpt.get());
+            order.setCustomer(customer);
+            order.setProduct(product);
             order.setSoLuong(soLuong);
             order.setOrderDate(LocalDate.now());
-            orderRepository.save(order);
+
+            orderRepository.save(order); // Lưu đơn hàng mới
         } else {
             throw new IllegalArgumentException("Không tìm thấy khách hàng hoặc sản phẩm.");
         }
     }
 
     public void editOrderProductName(int maDonHang, String tenMoi) {
-        Optional<Order> orderOpt = orderRepository.findById(maDonHang);
-        if (orderOpt.isPresent()) {
-            Order order = orderOpt.get();
-            Product product = order.getProduct();
-            product.setTenSP(tenMoi); // cập nhật tên sản phẩm
-            productRepository.save(product);
+        try {
+            Optional<Order> orderOpt = orderRepository.findById(maDonHang);
+            if (orderOpt.isPresent()) {
+                Order order = orderOpt.get();
+                Product product = order.getProduct();
+                product.setTenSP(tenMoi); // cập nhật tên sản phẩm
+                productRepository.save(product);
+            }else{
+                System.out.println("Không tìm thấy đơn hàng voi ma don hang: " + maDonHang);
+            }
+            }catch (Exception e) {
+                System.out.println("Lỗi khi sửa tên sản phẩm: " + e.getMessage());
+            }
         }
-    }
+
+    
 
     public void deleteOrder(int maDonHang) {
         orderRepository.deleteById(maDonHang);

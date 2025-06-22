@@ -1,32 +1,25 @@
 package com.example.servingwebcontent.pure_java_project.service;
 
 import com.example.servingwebcontent.pure_java_project.model.Order;
+import com.example.servingwebcontent.pure_java_project.repository.OrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class OrderHistoryService {
-    private final List<Order> orders = new ArrayList<>();
 
-    public OrderHistoryService() {
-        // Có thể khởi tạo mẫu đơn hàng ở đây nếu cần
-    }
+    @Autowired
+    private OrderRepository orderRepository;
 
-    // Lọc đơn hàng theo mã khách hàng
+    // Lọc đơn hàng theo mã khách hàng từ CSDL
     public List<Order> getOrdersByCustomerId(String customerId) {
-        List<Order> result = new ArrayList<>();
-        for (Order o : orders) {
-            if (o.getCustomer() != null && o.getCustomer().getCustomerId().equals(customerId)) {
-                result.add(o);
-            }
-        }
-        return result;
-    }
+        String keyword = customerId.trim().toLowerCase(); // chuẩn hóa input
 
-    // Thêm đơn hàng vào lịch sử (tuỳ chọn nếu cần lưu cục bộ)
-    public void addOrderToHistory(Order order) {
-        orders.add(order);
+        return orderRepository.findAll().stream()
+                .filter(order -> order.getCustomer() != null
+                        && order.getCustomer().getCustomerId().trim().toLowerCase().equals(keyword))
+                .toList();
     }
 }

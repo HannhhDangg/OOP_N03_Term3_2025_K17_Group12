@@ -5,16 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.example.servingwebcontent.pure_java_project.model.Product;
-import com.example.servingwebcontent.pure_java_project.repository.CustomerRepository;
 import com.example.servingwebcontent.pure_java_project.repository.ProductRepository;
-import com.example.servingwebcontent.pure_java_project.model.Customer;
-// import com.example.servingwebcontent.pure_java_project.model.Product;
 import com.example.servingwebcontent.pure_java_project.service.ProductsList;
+// import com.example.servingwebcontent.pure_java_project.model.Product;
 @Controller
 public class ProductController {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private ProductsList productService;
 
     @GetMapping("/products")
     public String danhSachSanPham(Model model) {
@@ -39,14 +40,15 @@ public class ProductController {
         return "redirect:/products";
     }
     @PostMapping("/products/sua-ten")
-    public String suaTen(@RequestParam String maSP,@RequestParam String tenMoi) {
-        // productRepository.suaTenSanPhamTheoMaSanPham(maSP,tenMoi);
+    public String suaTen(@RequestParam String maSP, @RequestParam String tenMoi) {
+        productService.suaTenSanPhamTheoMaSanPham(maSP, tenMoi);
         return "redirect:/products";
-    }
+}
+
 
     @PostMapping("/products/xoa")
     public String xoa(@RequestParam String maSP) {
-        // productRepository.xoaSanPhamTheoMaSanPham(maSP);
+        productService.xoaSanPhamTheoMaSanPham(maSP);
         return "redirect:/products";
     }
 }
