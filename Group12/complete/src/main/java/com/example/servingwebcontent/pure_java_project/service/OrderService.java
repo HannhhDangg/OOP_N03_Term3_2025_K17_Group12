@@ -8,7 +8,6 @@ import com.example.servingwebcontent.pure_java_project.repository.ProductReposit
 import com.example.servingwebcontent.pure_java_project.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -36,9 +35,18 @@ public class OrderService {
         return total;
     }
 
-    public void addOrder(String customerId, String maSp, int soLuong) {
+    public void addOrder(String customerId, String masp, int soLuong) {
+        System.out.println("=====================================");
+        System.out.println(masp);
+        System.out.println(customerId);
+        System.out.println(soLuong);
         Optional<Customer> customerOpt = customerRepository.findById(customerId);
-        Optional<Product> productOpt = productRepository.findById(maSp);
+        Optional<Product> productOpt = productRepository.findById(masp);
+
+        System.out.print(customerOpt.get().getCustomerName());
+        System.out.print(productOpt.get().getTenSP());
+        System.out.print(customerOpt.isPresent());
+    
 
         if (customerOpt.isPresent() && productOpt.isPresent()) {
             Order order = new Order();

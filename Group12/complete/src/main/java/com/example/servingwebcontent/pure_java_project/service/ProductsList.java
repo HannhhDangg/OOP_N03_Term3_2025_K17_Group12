@@ -2,84 +2,83 @@ package com.example.servingwebcontent.pure_java_project.service;
 
 import org.springframework.stereotype.Service;
 
+import com.example.servingwebcontent.pure_java_project.model.Order;
 import com.example.servingwebcontent.pure_java_project.model.Product;
-
+import com.example.servingwebcontent.pure_java_project.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ProductsList {
-    private List<Product> danhSachSanPham = new ArrayList<>();
+    @Autowired
+    private ProductRepository productRepository;
 
-    // Khởi tạo dữ liệu mẫu
-    public ProductsList() {
-        themSanPham(new Product("SP01", "Áo thun", "Áo", "M", "Trắng", 150000, 10));
-        themSanPham(new Product("SP02", "Quần jeans", "Quần", "L", "Xanh", 300000, 5));
-        themSanPham(new Product("SP03", "Giày", "Giày", "42", "Đen", 500000, 3));
-    }
-
-    // Lấy danh sách sản phẩm
     public List<Product> getAll() {
-        return danhSachSanPham;
+        return productRepository.findAll();
     }
+    // Khởi tạo dữ liệu mẫu
+    public ProductsList() {}
 
     // Thêm sản phẩm
-    public void themSanPham(Product sp) {
-        try {
-            danhSachSanPham.add(sp);
-        } catch (Exception e) {
-            System.out.println("Lỗi khi thêm sản phẩm: " + e.getMessage());
-        } finally {
-            System.out.println("Đã gọi phương thức thêm sản phẩm.");
-        }
-    }
+    // public void themSanPham(Product sp) {
+    //     try {
+    //         danhSachSanPham.add(sp);
+    //     } catch (Exception e) {
+    //         System.out.println("Lỗi khi thêm sản phẩm: " + e.getMessage());
+    //     } finally {
+    //         System.out.println("Đã gọi phương thức thêm sản phẩm.");
+    //     }
+    // }
+
+
 
      // Sửa tên sản phẩm theo Mã sản Phẩm
-    public void suaTenSanPhamTheoMaSanPham(String maSP,String tenMoi) {
-        try {
-            for (Product sp : danhSachSanPham) {
-                 if (sp.getMaSP().equalsIgnoreCase(maSP)) {
-                    danhSachSanPham.set(danhSachSanPham.indexOf(sp),
-                    new Product(
-                        sp.getMaSP(), tenMoi, sp.getLoai(), sp.getSize(),
-                        sp.getMauSac(), sp.getGia(), sp.getSoLuong()
-                    ));
-                    break; 
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Lỗi khi sửa tên sản phẩm: " + e.getMessage());
-        } finally {
-            System.out.println("Đã gọi phương thức sửa tên sản phẩm.");
-        }
-    }
+    // public void suaTenSanPhamTheoMaSanPham(String maSP,String tenMoi) {
+    //     try {
+    //         for (Product sp : danhSachSanPham) {
+    //              if (sp.getMaSP().equalsIgnoreCase(maSP)) {
+    //                 danhSachSanPham.set(danhSachSanPham.indexOf(sp),
+    //                 new Product(
+    //                     sp.getMaSP(), tenMoi, sp.getLoai(), sp.getSize(),
+    //                     sp.getMauSac(), sp.getGia(), sp.getSoLuong()
+    //                 ));
+    //                 break; 
+    //             }
+    //         }
+    //     } catch (Exception e) {
+    //         System.out.println("Lỗi khi sửa tên sản phẩm: " + e.getMessage());
+    //     } finally {
+    //         System.out.println("Đã gọi phương thức sửa tên sản phẩm.");
+    //     }
+    // }
 
-    // Xóa sản phẩm theo Mã sản phẩm
-    public void xoaSanPhamTheoMaSanPham(String maSP) {
-        try {
-            danhSachSanPham.removeIf(sp -> sp.getMaSP() .equalsIgnoreCase(maSP));
-        } catch (Exception e) {
-            System.out.println("Lỗi khi xóa sản phẩm: " + e.getMessage());
-        } finally {
-            System.out.println("Đã gọi phương thức xóa sản phẩm.");
-        }
-    }
+    // // Xóa sản phẩm theo Mã sản phẩm
+    // public void xoaSanPhamTheoMaSanPham(String maSP) {
+    //     try {
+    //         danhSachSanPham.removeIf(sp -> sp.getMaSP() .equalsIgnoreCase(maSP));
+    //     } catch (Exception e) {
+    //         System.out.println("Lỗi khi xóa sản phẩm: " + e.getMessage());
+    //     } finally {
+    //         System.out.println("Đã gọi phương thức xóa sản phẩm.");
+    //     }
+    // }
     
-    public void inDanhSachSanPham() {
-        try {
-            for (Product sp : danhSachSanPham) {
-                System.out.println("Mã SP: " + sp.getMaSP()
-                    + " | Tên SP: " + sp.getTenSP()
-                    + " | Loại: " + sp.getLoai()
-                    + " | Size: " + sp.getSize()
-                    + " | Màu sắc: " + sp.getMauSac()
-                    + " | Giá: " + sp.getGia()
-                    + " | Số lượng: " + sp.getSoLuong());
-            }
-        } catch (Exception e) {
-            System.out.println("Lỗi khi in danh sách sản phẩm: " + e.getMessage());
-        } finally {
-            System.out.println("Đã gọi phương thức in danh sách sản phẩm.");
-        }
-    }
+    // public void inDanhSachSanPham() {
+    //     try {
+    //         for (Product sp : danhSachSanPham) {
+    //             System.out.println("Mã SP: " + sp.getMaSP()
+    //                 + " | Tên SP: " + sp.getTenSP()
+    //                 + " | Loại: " + sp.getLoai()
+    //                 + " | Size: " + sp.getSize()
+    //                 + " | Màu sắc: " + sp.getMauSac()
+    //                 + " | Giá: " + sp.getGia()
+    //                 + " | Số lượng: " + sp.getSoLuong());
+    //         }
+    //     } catch (Exception e) {
+    //         System.out.println("Lỗi khi in danh sách sản phẩm: " + e.getMessage());
+    //     } finally {
+    //         System.out.println("Đã gọi phương thức in danh sách sản phẩm.");
+    //     }
+    // }
 }

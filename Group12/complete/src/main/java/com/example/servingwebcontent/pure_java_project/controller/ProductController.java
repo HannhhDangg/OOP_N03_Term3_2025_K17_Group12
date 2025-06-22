@@ -4,18 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import com.example.servingwebcontent.pure_java_project.model.Product;
+import com.example.servingwebcontent.pure_java_project.repository.CustomerRepository;
+import com.example.servingwebcontent.pure_java_project.repository.ProductRepository;
+import com.example.servingwebcontent.pure_java_project.model.Customer;
 // import com.example.servingwebcontent.pure_java_project.model.Product;
 import com.example.servingwebcontent.pure_java_project.service.ProductsList;
 @Controller
 public class ProductController {
 
     @Autowired
-    private ProductsList productsList;
+    private ProductRepository productRepository;
 
     @GetMapping("/products")
     public String danhSachSanPham(Model model) {
-        model.addAttribute("products", productsList.getAll());
+        model.addAttribute("products", productRepository.findAll());
         return "product_list"; // Giao diện Thymeleaf
     }
 
@@ -28,20 +31,22 @@ public class ProductController {
             @RequestParam String mauSac,
             @RequestParam double gia,
             @RequestParam int soLuong) {
-        productsList.themSanPham(new com.example.servingwebcontent.pure_java_project.model.Product(
-                maSP, tenSP, loai, size, mauSac, gia, soLuong
-        ));
+
+        Product product = new Product( maSP,  tenSP,  loai,  size,  mauSac ,gia, soLuong);
+
+        productRepository.save(product);
+
         return "redirect:/products";
     }
     @PostMapping("/products/sua-ten")
     public String suaTen(@RequestParam String maSP,@RequestParam String tenMoi) {
-        productsList.suaTenSanPhamTheoMaSanPham(maSP,tenMoi);
+        // productRepository.suaTenSanPhamTheoMaSanPham(maSP,tenMoi);
         return "redirect:/products";
     }
 
     @PostMapping("/products/xoa")
     public String xoa(@RequestParam String maSP) {
-        productsList.xoaSanPhamTheoMaSanPham(maSP);
+        // productRepository.xoaSanPhamTheoMaSanPham(maSP);
         return "redirect:/products";
     }
 }

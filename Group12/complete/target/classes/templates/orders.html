@@ -34,9 +34,9 @@
             <td th:text="${order.maDonHang}">DH01</td>
             <td th:text="${order.product != null ? order.product.maSP : 'N/A'}">SP01</td>
             <td th:text="${order.product != null ? order.product.tenSP : 'N/A'}">Tên SP</td>
-            <td th:text="${order.product != null ? order.product.giaSP : 0}">0</td>
+            <td th:text="${order.product != null ? order.product.gia : 0}">0</td>
             <td th:text="${order.soLuong}">0</td>
-            <td th:text="${order.product != null ? order.soLuong * order.product.giaSP : 0}">0</td>
+            <td th:text="${order.product != null ? order.soLuong * order.product.gia : 0}">0</td>
             <td th:text="${order.customer != null ? order.customer.customerName : 'N/A'}">Tên KH</td>
             <td th:text="${order.customer != null ? order.customer.customerId : 'N/A'}">KH01</td>
             <td th:text="${order.orderDate}">2025-01-01</td>

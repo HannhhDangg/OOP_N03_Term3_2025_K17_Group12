@@ -2,6 +2,7 @@ package com.example.servingwebcontent.pure_java_project.controller;
 
 import com.example.servingwebcontent.pure_java_project.repository.CustomerRepository;
 import com.example.servingwebcontent.pure_java_project.repository.ProductRepository;
+import com.example.servingwebcontent.pure_java_project.service.ProductsList;
 import com.example.servingwebcontent.pure_java_project.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ public class OrderController {
 
     @Autowired
     private ProductRepository productRepository;
+
 
     // Hiển thị danh sách đơn hàng
     @GetMapping("/orders")
@@ -39,6 +41,9 @@ public class OrderController {
     public String themDonHang(@RequestParam String customerId,
                             @RequestParam String maSp,
                             @RequestParam int soLuong) {
+                                System.out.println(maSp);
+        System.out.println(customerId);
+        System.out.println(soLuong);
         orderService.addOrder(customerId, maSp, soLuong);
         return "redirect:/orders";
     }

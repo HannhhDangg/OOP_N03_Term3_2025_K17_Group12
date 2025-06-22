@@ -34,7 +34,7 @@ public class CustomerController {
 
         String newCustomerId = "KH" + UUID.randomUUID().toString().substring(0, 6);
 
-        Customer customer = new Customer(newCustomerId, customerName, address, email, phone);
+        Customer customer = new Customer(newCustomerId, customerName, phone, email, address);
         customerRepository.save(customer);
 
         return "redirect:/customers";
