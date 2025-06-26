@@ -30,7 +30,7 @@ public class ProductController {
             @RequestParam String size,
             @RequestParam String mauSac,
             @RequestParam double gia,
-            @RequestParam int soLuong) {
+            @RequestParam int soLuong , Model model) {
 
         // Sinh mã SP tự động theo định dạng SP01, SP02...
         long count = productRepository.count() + 1;
@@ -41,18 +41,18 @@ public class ProductController {
 
         productRepository.save(product);
 
-        return "redirect:/products";
+        return danhSachSanPham(model);
     }
     @PostMapping("/products/sua-ten")
-    public String suaTen(@RequestParam String maSP, @RequestParam String tenMoi) {
+    public String suaTen(@RequestParam String maSP, @RequestParam String tenMoi, Model model) {
         productService.suaTenSanPhamTheoMaSanPham(maSP, tenMoi);
-        return "redirect:/products";
+        return danhSachSanPham(model);
 }
 
 
     @PostMapping("/products/xoa")
-    public String xoa(@RequestParam String maSP) {
+    public String xoa(@RequestParam String maSP,Model model) {
         productService.xoaSanPhamTheoMaSanPham(maSP);
-        return "redirect:/products";
+        return danhSachSanPham(model);
     }
 }

@@ -30,14 +30,14 @@ public class CustomerController {
             @RequestParam String customerName,
             @RequestParam String address,
             @RequestParam String email,
-            @RequestParam String phone) {
+            @RequestParam String phone, Model model) {
 
         String newCustomerId = "KH" + UUID.randomUUID().toString().substring(0, 6);
 
         Customer customer = new Customer(newCustomerId, customerName, phone, email, address);
         customerRepository.save(customer);
 
-        return "redirect:/customers";
+        return hienThiKhachHang(model);
     }
 
     // Sửa thông tin khách hàng
@@ -47,7 +47,7 @@ public class CustomerController {
             @RequestParam String customerName,
             @RequestParam String address,
             @RequestParam String email,
-            @RequestParam String phone) {
+            @RequestParam String phone, Model model) {
 
         Customer existing = customerRepository.findById(customerId).orElse(null);
         if (existing != null) {
@@ -58,13 +58,13 @@ public class CustomerController {
             customerRepository.save(existing);
         }
 
-        return "redirect:/customers";
+        return hienThiKhachHang(model);
     }
 
     // Xóa khách hàng
     @PostMapping("/customers/delete")
-    public String xoaKhachHang(@RequestParam String customerId) {
+    public String xoaKhachHang(@RequestParam String customerId, Model model) {
         customerRepository.deleteById(customerId);
-        return "redirect:/customers";
+        return hienThiKhachHang(model);
     }
 }

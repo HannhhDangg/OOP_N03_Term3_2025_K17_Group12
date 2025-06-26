@@ -30,7 +30,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="order : ${orders}">
+        <tr th:each="order :${orders}">
             <td th:text="${order.maDonHang}">DH01</td>
             <td th:text="${order.product != null ? order.product.maSP : 'N/A'}">SP01</td>
             <td th:text="${order.product != null ? order.product.tenSP : 'N/A'}">Tên SP</td>

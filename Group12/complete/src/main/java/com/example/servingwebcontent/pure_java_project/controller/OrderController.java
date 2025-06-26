@@ -39,26 +39,38 @@ public class OrderController {
     @PostMapping("/orders/add")
     public String themDonHang(@RequestParam String customerId,
                             @RequestParam String maSp,
-                            @RequestParam int soLuong) {
+                            @RequestParam int soLuong, Model model) {
                                 System.out.println(maSp);
         System.out.println(customerId);
         System.out.println(soLuong);
         orderService.addOrder(customerId, maSp, soLuong);
-        return "redirect:/orders";
+        return hienThiDonHang(model);
     }
 
     // Sửa tên sản phẩm
     @PostMapping("/orders/edit")
     public String suaTenSanPham(@RequestParam int maDonHang,
-                            @RequestParam String tenSp) {
+                            @RequestParam String tenSp, Model model) {
         orderService.editOrderProductName(maDonHang, tenSp);
-        return "redirect:/orders";
+        return hienThiDonHang(model);
+    }
+
+    // ✅ Xoá đơn hàng
+    @PostMapping("/orders/delete")
+    public String xoaDonHang(@RequestParam int maDonHang, Model model) {
+
+        orderService.deleteOrder(maDonHang);
+
+        return hienThiDonHang(model);
     }
 
     // Xoá đơn hàng
-    @PostMapping("/orders/delete")
-    public String xoaDonHang(@RequestParam int maDonHang) {
-        orderService.deleteOrder(maDonHang);
-        return "redirect:/orders";
-    }
+    // @PostMapping("/orders/delete")
+    // public String xoaDonHang(@RequestParam int maDonHang) {
+    //     orderService.deleteOrder(maDonHang);
+
+
+       
+    //     return "redirect:/orders";
+    // }
 }
