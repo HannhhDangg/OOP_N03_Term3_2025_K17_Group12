@@ -25,13 +25,17 @@ public class ProductController {
 
     @PostMapping("/products/them")
     public String themSanPham(
-            @RequestParam String maSP,
             @RequestParam String tenSP,
             @RequestParam String loai,
             @RequestParam String size,
             @RequestParam String mauSac,
             @RequestParam double gia,
             @RequestParam int soLuong) {
+
+        // Sinh mã SP tự động theo định dạng SP01, SP02...
+        long count = productRepository.count() + 1;
+        String maSP = String.format("SP%02d", count);
+
 
         Product product = new Product( maSP,  tenSP,  loai,  size,  mauSac ,gia, soLuong);
 
