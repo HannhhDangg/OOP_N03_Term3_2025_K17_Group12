@@ -109,6 +109,7 @@ orderHistory :
 ![orderHistory](https://github.com/user-attachments/assets/39c88c3b-efc4-457c-b5f9-e068603e227d)
 Xem lịch sử mua hàng của từng khách hàng.
 
+![image](https://github.com/user-attachments/assets/4b625fba-134e-4f26-a665-1f0ed3eeab92)
 
 
 
